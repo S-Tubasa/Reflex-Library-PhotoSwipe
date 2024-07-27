@@ -1,8 +1,8 @@
 {
-  "name": "@aaaa/foto",
-  "homepage": "https://morewings.github.io/react-library-template/",
+  "name": "@aaaa/photoswipe",
+  "homepage": "",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.1",
   "type": "module",
   "files": [
     "dist"
