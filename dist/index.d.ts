@@ -11,6 +11,8 @@ declare interface CounterProps {
     heighta: string;
     widthb: string;
     heightb: string;
+    alta: string;
+    altb: string;
 }
 
 export { }

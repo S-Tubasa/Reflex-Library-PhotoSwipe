@@ -1,6 +1,6 @@
 // import React from 'react';
 import { Gallery, Item } from 'react-photoswipe-gallery';
-import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
+// import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
 // @ts-expect-error
 import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
 
@@ -48,7 +48,7 @@ export const Counter = (props: CounterProps) => (
         plugins={(pswpLightbox) => {
             // register plugin
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const captionPlugin = new PhotoSwipeDynamicCaption(pswpLightbox, {
+            new PhotoSwipeDynamicCaption(pswpLightbox, {
                 captionContent: (slide: any) => slide.data.alt,
             })
 

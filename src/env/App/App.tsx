@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import { Counter } from '@/lib';
 import './index.css';
 import 'photoswipe/dist/photoswipe.css';
+import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css';
 
 const App: FC = () => {
     return (

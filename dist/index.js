@@ -1,61 +1,76 @@
-import { jsx as t, jsxs as a } from "react/jsx-runtime";
-import { Gallery as n, Item as h } from "react-photoswipe-gallery";
-import "photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css";
-const r = {
+import { jsx as a, jsxs as h } from "react/jsx-runtime";
+import { Gallery as r, Item as e } from "react-photoswipe-gallery";
+import m from "photoswipe-dynamic-caption-plugin";
+const n = {
   cursor: "pointer",
   objectFit: "cover",
-  width: "150px",
-  height: "150px"
-}, g = (i) => /* @__PURE__ */ t(n, { children: /* @__PURE__ */ a(
-  "div",
+  width: "300px",
+  height: "300px"
+}, g = (i) => /* @__PURE__ */ a(
+  r,
   {
-    style: {
-      display: "grid",
-      gridTemplateColumns: "repeat(3, 0fr)",
-      gridGap: 10
+    plugins: (t) => {
+      new m(t, {
+        captionContent: (l) => l.data.alt
+      });
     },
-    children: [
-      /* @__PURE__ */ t(
-        h,
-        {
-          cropped: !0,
-          original: i.originala,
-          thumbnail: i.thumbnaila,
-          width: i.widtha,
-          height: i.heighta,
-          children: ({ ref: e, open: l }) => /* @__PURE__ */ t(
-            "img",
+    children: /* @__PURE__ */ h(
+      "div",
+      {
+        style: {
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 0fr)",
+          gridGap: 50
+        },
+        children: [
+          /* @__PURE__ */ a(
+            e,
             {
-              style: r,
-              src: i.thumbnaila,
-              ref: e,
-              onClick: l
+              cropped: !0,
+              original: i.originala,
+              thumbnail: i.thumbnaila,
+              width: i.widtha,
+              height: i.heighta,
+              alt: i.alta,
+              children: ({ ref: t, open: l }) => (
+                // <div style={smallItemStyles2}>
+                /* @__PURE__ */ a(
+                  "img",
+                  {
+                    style: n,
+                    src: i.thumbnaila,
+                    ref: t,
+                    onClick: l
+                  }
+                )
+              )
+            }
+          ),
+          /* @__PURE__ */ a(
+            e,
+            {
+              cropped: !0,
+              original: i.originalb,
+              thumbnail: i.thumbnailb,
+              width: i.widthb,
+              height: i.heightb,
+              alt: i.altb,
+              children: ({ ref: t, open: l }) => /* @__PURE__ */ a(
+                "img",
+                {
+                  style: n,
+                  src: i.thumbnailb,
+                  ref: t,
+                  onClick: l
+                }
+              )
             }
           )
-        }
-      ),
-      /* @__PURE__ */ t(
-        h,
-        {
-          cropped: !0,
-          original: i.originalb,
-          thumbnail: i.thumbnailb,
-          width: i.widthb,
-          height: i.heightb,
-          children: ({ ref: e, open: l }) => /* @__PURE__ */ t(
-            "img",
-            {
-              style: r,
-              src: i.thumbnailb,
-              ref: e,
-              onClick: l
-            }
-          )
-        }
-      )
-    ]
+        ]
+      }
+    )
   }
-) });
+);
 export {
   g as Counter
 };
