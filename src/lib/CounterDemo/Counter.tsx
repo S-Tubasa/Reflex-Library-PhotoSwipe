@@ -1,106 +1,52 @@
 // import React from 'react';
 import { Gallery, Item } from 'react-photoswipe-gallery';
 // import 'photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css'
-// @ts-expect-error
-import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin'
+
+// import PhotoSwipeDynamicCaption from 'photoswipe-dynamic-caption-plugin' // @ts-expect-error
+
+
+
+const smallItemStylesLandscape: React.CSSProperties = {
+    cursor: 'pointer',
+    objectFit: 'cover',
+    width: '100%',
+    height: 'auto',
+    aspectRatio: '1216/832',
+};
+
+const smallItemStylesPortrait: React.CSSProperties = {
+    cursor: 'pointer',
+    objectFit: 'cover',
+    width: '100%',
+    height: 'auto',
+    aspectRatio: '832/1216',
+};
 
 
 // TODO: reflexでインポートすると_が何故か使えない
 export interface CounterProps {
-    originala: string;
-    thumbnaila: string;
-    originalb: string;
-    thumbnailb: string;
-    widtha: string;
-    heighta: string;
-    widthb: string;
-    heightb: string;
-    alta: string;
-    altb: string;
+    original: string;
+    thumbnail: string;
+    width: string;
+    height: string;
+    type: string;
 }
 
-const smallItemStyles: React.CSSProperties = {
-    cursor: 'pointer',
-    objectFit: 'cover',
-    width: '300px',
-    height: '300px',
-}
-
-// const smallItemStyles2: React.CSSProperties = {
-//     position: 'relative',
-//     display: 'block',
-// }
-
-
-// const captionStyles: React.CSSProperties = {
-//     position: 'absolute',
-//     bottom: '10px',
-//     right: '10px',
-//     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-//     color: 'white',
-//     padding: '5px',
-//     borderRadius: '3px',
-//     fontSize: '12px',
-// };
-
-export const Counter = (props: CounterProps) => (
-    <Gallery
-        plugins={(pswpLightbox) => {
-            // register plugin
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            new PhotoSwipeDynamicCaption(pswpLightbox, {
-                captionContent: (slide: any) => slide.data.alt,
-            })
-
-            // register another plugin
-            // ...
-        }}
-    >
-        <div
-            style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(3, 0fr)',
-                gridGap: 50,
-            }}
-        >
-            <Item<HTMLImageElement>
+export const Counter = (props: CounterProps) => {
+    const style = props.type === 'Landscape' ? smallItemStylesLandscape : smallItemStylesPortrait;
+    return (
+        <Gallery>
+            <Item
                 cropped
-                original={props.originala}
-                thumbnail={props.thumbnaila}
-                width={props.widtha}
-                height={props.heighta}
-                alt={props.alta}
+                original={props.original}
+                thumbnail={props.thumbnail}
+                width={props.width}
+                height={props.height}
             >
-                {({ ref, open }) => (
-                    // <div style={smallItemStyles2}>
-                    <img
-                        style={smallItemStyles}
-                        src={props.thumbnaila}
-                        ref={ref}
-                        onClick={open}
-                    />
-                    // <div style={captionStyles}>{props.alta}</div>
-                    // </div>
-                )}
+                {({ ref, open }) => <img style={style} ref={ref} onClick={open} src={props.thumbnail} />}
             </Item>
-            <Item<HTMLImageElement>
-                cropped
-                original={props.originalb}
-                thumbnail={props.thumbnailb}
-                width={props.widthb}
-                height={props.heightb}
-                alt={props.altb}
-            >
-                {({ ref, open }) => (
-                    <img
-                        style={smallItemStyles}
-                        src={props.thumbnailb}
-                        ref={ref}
-                        onClick={open}
-                    />
-                )}
-            </Item>
-        </div >
-    </Gallery >
-)
+        </Gallery >
+    );
+};
+
 
